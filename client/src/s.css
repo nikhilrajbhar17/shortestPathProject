@@ -1,0 +1,94 @@
+/* General styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  color: #333;
+  text-align: center;
+}
+
+/* Path visualization styles */
+.path-info {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.path-info p {
+  font-size: 18px;
+  color: #555;
+}
+
+.path-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  overflow-x: auto; /* Allow horizontal scrolling on smaller screens */
+}
+
+.node {
+  width: 40px;
+  height: 40px;
+  background-color: #007bff;
+  color: #fff;
+  text-align: center;
+  line-height: 40px;
+  border-radius: 50%;
+  font-size: 16px;
+  margin: 0 10px;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.node:hover {
+  background-color: #0056b3;
+}
+
+.node.active {
+  background-color: #28a745;
+}
+
+.arrow {
+  position: relative;
+  width: 100px;
+  height: 2px;
+  background-color: #ccc;
+  margin: 0 5px;
+}
+
+.arrow::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 10px solid #ccc;
+}
+
+@media (max-width: 600px) {
+  .path-container {
+    flex-wrap: wrap; /* Allow nodes to wrap on smaller screens */
+    justify-content: flex-start; /* Align nodes from left to right */
+    padding: 10px; /* Add padding for better spacing */
+  }
+
+  .node {
+    margin: 5px; /* Reduce margin between nodes */
+  }
+}
