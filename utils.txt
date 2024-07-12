@@ -1,0 +1,322 @@
+#include <iostream>
+#include <unordered_map>
+#include <vector>
+#include <utility> // for pair
+
+using namespace std;
+
+int main() {
+    // Define the adjacency list using unordered_map
+    unordered_map<string, vector<pair<string, int>>> adjList;
+
+    // Inserting nodes and their connections
+    adjList["Andhra Pradesh"] = {{"Telangana", 190}, {"Tamil Nadu", 580}, {"Karnataka", 350}, {"Odisha", 460}};
+    adjList["Arunachal Pradesh"] = {{"Assam", 380}, {"Nagaland", 440}, {"Myanmar", 520}};
+    adjList["Assam"] = {{"Arunachal Pradesh", 380}, {"Nagaland", 120}, {"Manipur", 480}, {"Meghalaya", 290}};
+    adjList["Bihar"] = {{"Jharkhand", 270}, {"Uttar Pradesh", 410}, {"West Bengal", 350}};
+    adjList["Chhattisgarh"] = {{"Maharashtra", 560}, {"Madhya Pradesh", 340}, {"Odisha", 560}, {"Telangana", 490}, {"Jharkhand", 280}, {"Uttar Pradesh", 730}};
+    adjList["Goa"] = {{"Karnataka", 210}, {"Maharashtra", 470}};
+    adjList["Gujarat"] = {{"Rajasthan", 470}, {"Maharashtra", 500}, {"Madhya Pradesh", 880}};
+    adjList["Haryana"] = {{"Punjab", 290}, {"Himachal Pradesh", 370}, {"Uttarakhand", 310}, {"Uttar Pradesh", 460}, {"Rajasthan", 470}, {"Delhi", 30}};
+    adjList["Himachal Pradesh"] = {{"Jammu and Kashmir", 280}, {"Punjab", 240}, {"Uttarakhand", 240}, {"Haryana", 370}};
+    adjList["Jharkhand"] = {{"Bihar", 270}, {"Chhattisgarh", 280}, {"Odisha", 420}, {"West Bengal", 320}};
+    adjList["Karnataka"] = {{"Goa", 210}, {"Maharashtra", 740}, {"Kerala", 560}, {"Tamil Nadu", 430}, {"Telangana", 570}, {"Andhra Pradesh", 350}};
+    adjList["Kerala"] = {{"Karnataka", 560}, {"Tamil Nadu", 310}};
+    adjList["Madhya Pradesh"] = {{"Uttar Pradesh", 690}, {"Rajasthan", 610}, {"Chhattisgarh", 340}, {"Maharashtra", 810}, {"Gujarat", 880}};
+    adjList["Maharashtra"] = {{"Gujarat", 500}, {"Madhya Pradesh", 810}, {"Chhattisgarh", 560}, {"Telangana", 600}, {"Karnataka", 740}, {"Goa", 470}};
+    adjList["Manipur"] = {{"Nagaland", 210}, {"Mizoram", 460}, {"Assam", 480}};
+    adjList["Meghalaya"] = {{"Assam", 290}};
+    adjList["Mizoram"] = {{"Manipur", 460}, {"Tripura", 330}, {"Assam", 350}};
+    adjList["Nagaland"] = {{"Arunachal Pradesh", 440}, {"Manipur", 210}, {"Assam", 120}};
+    adjList["Odisha"] = {{"Jharkhand", 420}, {"Chhattisgarh", 560}, {"Telangana", 870}, {"Andhra Pradesh", 460}, {"West Bengal", 440}};
+    adjList["Punjab"] = {{"Haryana", 290}, {"Himachal Pradesh", 240}, {"Jammu and Kashmir", 340}};
+    adjList["Rajasthan"] = {{"Gujarat", 470}, {"Madhya Pradesh", 610}, {"Haryana", 470}, {"Uttar Pradesh", 600}, {"Punjab", 600}};
+    adjList["Sikkim"] = {{"West Bengal", 150}};
+    adjList["Tamil Nadu"] = {{"Kerala", 310}, {"Karnataka", 430}, {"Andhra Pradesh", 580}};
+    adjList["Telangana"] = {{"Andhra Pradesh", 190}, {"Chhattisgarh", 490}, {"Maharashtra", 600}, {"Karnataka", 570}, {"Odisha", 870}};
+    adjList["Tripura"] = {{"Mizoram", 330}, {"Assam", 160}};
+    adjList["Uttar Pradesh"] = {{"Bihar", 410}, {"Madhya Pradesh", 690}, {"Chhattisgarh", 730}, {"Rajasthan", 600}, {"Haryana", 460}, {"Uttarakhand", 550}, {"Delhi", 530}};
+    adjList["Uttarakhand"] = {{"Uttar Pradesh", 550}, {"Himachal Pradesh", 240}, {"Haryana", 310}};
+    adjList["West Bengal"] = {{"Sikkim", 150}, {"Jharkhand", 320}, {"Odisha", 440}, {"Bihar", 350}, {"Assam", 710}};
+
+    // Printing the adjacency list
+    for (const auto& pair : adjList) {
+        cout << pair.first << " -> ";
+        for (const auto& neighbor : pair.second) {
+            cout << "(" << neighbor.first << ", " << neighbor.second << ") ";
+        }
+        cout << endl;
+    }
+
+    return 0;
+}
+
+
+
+
+
+
+
+1. Andhra Pradesh -> {Telangana: 190 km, Tamil Nadu: 580 km, Karnataka: 350 km, Odisha: 460 km}
+2. Arunachal Pradesh -> {Assam: 380 km, Nagaland: 440 km, Myanmar: 520 km}
+3. Assam -> {Arunachal Pradesh: 380 km, Nagaland: 120 km, Manipur: 480 km, Meghalaya: 290 km}
+4. Bihar -> {Jharkhand: 270 km, Uttar Pradesh: 410 km, West Bengal: 350 km}
+5. Chhattisgarh -> {Maharashtra: 560 km, Madhya Pradesh: 340 km, Odisha: 560 km, Telangana: 490 km, Jharkhand: 280 km, Uttar Pradesh: 730 km}
+6. Goa -> {Karnataka: 210 km, Maharashtra: 470 km}
+7. Gujarat -> {Rajasthan: 470 km, Maharashtra: 500 km, Madhya Pradesh: 880 km}
+8. Haryana -> {Punjab: 290 km, Himachal Pradesh: 370 km, Uttarakhand: 310 km, Uttar Pradesh: 460 km, Rajasthan: 470 km, Delhi: 30 km}
+9. Himachal Pradesh -> {Jammu and Kashmir: 280 km, Punjab: 240 km, Uttarakhand: 240 km, Haryana: 370 km}
+10. Jharkhand -> {Bihar: 270 km, Chhattisgarh: 280 km, Odisha: 420 km, West Bengal: 320 km}
+11. Karnataka -> {Goa: 210 km, Maharashtra: 740 km, Kerala: 560 km, Tamil Nadu: 430 km, Telangana: 570 km, Andhra Pradesh: 350 km}
+12. Kerala -> {Karnataka: 560 km, Tamil Nadu: 310 km}
+13. Madhya Pradesh -> {Uttar Pradesh: 690 km, Rajasthan: 610 km, Chhattisgarh: 340 km, Maharashtra: 810 km, Gujarat: 880 km}
+14. Maharashtra -> {Gujarat: 500 km, Madhya Pradesh: 810 km, Chhattisgarh: 560 km, Telangana: 600 km, Karnataka: 740 km, Goa: 470 km}
+15. Manipur -> {Nagaland: 210 km, Mizoram: 460 km, Assam: 480 km}
+16. Meghalaya -> {Assam: 290 km}
+17. Mizoram -> {Manipur: 460 km, Tripura: 330 km, Assam: 350 km}
+18. Nagaland -> {Arunachal Pradesh: 440 km, Manipur: 210 km, Assam: 120 km}
+19. Odisha -> {Jharkhand: 420 km, Chhattisgarh: 560 km, Telangana: 870 km, Andhra Pradesh: 460 km, West Bengal: 440 km}
+20. Punjab -> {Haryana: 290 km, Himachal Pradesh: 240 km, Jammu and Kashmir: 340 km}
+21. Rajasthan -> {Gujarat: 470 km, Madhya Pradesh: 610 km, Haryana: 470 km, Uttar Pradesh: 600 km, Punjab: 600 km}
+22. Sikkim -> {West Bengal: 150 km}
+23. Tamil Nadu -> {Kerala: 310 km, Karnataka: 430 km, Andhra Pradesh: 580 km}
+24. Telangana -> {Andhra Pradesh: 190 km, Chhattisgarh: 490 km, Maharashtra: 600 km, Karnataka: 570 km, Odisha: 870 km}
+25. Tripura -> {Mizoram: 330 km, Assam: 160 km}
+26. Uttar Pradesh -> {Bihar: 410 km, Madhya Pradesh: 690 km, Chhattisgarh: 730 km, Rajasthan: 600 km, Haryana: 460 km, Uttarakhand: 550 km, Delhi: 530 km}
+27. Uttarakhand -> {Uttar Pradesh: 550 km, Himachal Pradesh: 240 km, Haryana: 310 km}
+28. West Bengal -> {Sikkim: 150 km, Jharkhand: 320 km, Odisha: 440 km, Bihar: 350 km, Assam: 710 km}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // Blue Line Connections (Dwarka Sector 21 to Noida Electronic City)
+  'Dwarka Sector 21': { 'Dwarka Sector 8': 1.2 },
+  'Dwarka Sector 8': { 'Dwarka Sector 21': 1.2, 'Dwarka Sector 9': 1.0 },
+  'Dwarka Sector 9': { 'Dwarka Sector 8': 1.0, 'Dwarka Sector 10': 1.1 },
+  'Dwarka Sector 10': { 'Dwarka Sector 9': 1.1, 'Dwarka Sector 11': 1.0 },
+  'Dwarka Sector 11': { 'Dwarka Sector 10': 1.0, 'Dwarka Sector 12': 1.3 },
+  'Dwarka Sector 12': { 'Dwarka Sector 11': 1.3, 'Dwarka Sector 13': 1.2 },
+  'Dwarka Sector 13': { 'Dwarka Sector 12': 1.2, 'Dwarka Sector 14': 1.1 },
+  'Dwarka Sector 14': { 'Dwarka Sector 13': 1.1, 'Dwarka': 1.0 },
+  'Dwarka': { 'Dwarka Sector 14': 1.0, 'Dwarka Mor': 2.0 },
+  'Dwarka Mor': { 'Dwarka': 2.0, 'Nawada': 1.6 },
+  'Nawada': { 'Dwarka Mor': 1.6, 'Uttam Nagar West': 1.3 },
+  'Uttam Nagar West': { 'Nawada': 1.3, 'Uttam Nagar East': 1.0 },
+  'Uttam Nagar East': { 'Uttam Nagar West': 1.0, 'Janakpuri West': 1.2 },
+  'Janakpuri West': { 'Uttam Nagar East': 1.2, 'Janakpuri East': 1.1 },
+  'Janakpuri East': { 'Janakpuri West': 1.1, 'Tilak Nagar': 1.4 },
+  'Tilak Nagar': { 'Janakpuri East': 1.4, 'Subhash Nagar': 1.2 },
+  'Subhash Nagar': { 'Tilak Nagar': 1.2, 'Tagore Garden': 1.1 },
+  'Tagore Garden': { 'Subhash Nagar': 1.1, 'Rajouri Garden': 1.0 },
+  'Rajouri Garden': { 'Tagore Garden': 1.0, 'Ramesh Nagar': 1.5 },
+  'Ramesh Nagar': { 'Rajouri Garden': 1.5, 'Moti Nagar': 1.1 },
+  'Moti Nagar': { 'Ramesh Nagar': 1.1, 'Kirti Nagar': 1.1 },
+  'Kirti Nagar': { 'Moti Nagar': 1.1, 'Shadipur': 1.1 },
+  'Shadipur': { 'Kirti Nagar': 1.1, 'Patel Nagar': 1.2 },
+  'Patel Nagar': { 'Shadipur': 1.2, 'Rajendra Place': 1.0 },
+  'Rajendra Place': { 'Patel Nagar': 1.0, 'Karol Bagh': 1.4 },
+  'Karol Bagh': { 'Rajendra Place': 1.4, 'Jhandewalan': 1.0 },
+  'Jhandewalan': { 'Karol Bagh': 1.0, 'RK Ashram Marg': 1.3 },
+  'RK Ashram Marg': { 'Jhandewalan': 1.3, 'Rajiv Chowk': 1.1 },
+  'Rajiv Chowk': { 'RK Ashram Marg': 1.1, 'Barakhamba Road': 0.8, 'New Delhi': 1.5 },
+  'Barakhamba Road': { 'Rajiv Chowk': 0.8, 'Mandi House': 1.0 },
+  'Mandi House': { 'Barakhamba Road': 1.0, 'Pragati Maidan': 1.3, 'ITO': 1.2 },
+  'Pragati Maidan': { 'Mandi House': 1.3, 'Indraprastha': 1.5 },
+  'Indraprastha': { 'Pragati Maidan': 1.5, 'Yamuna Bank': 2.4 },
+  'Yamuna Bank': { 'Indraprastha': 2.4, 'Laxmi Nagar': 1.3, 'Akshardham': 2.7 },
+  'Laxmi Nagar': { 'Yamuna Bank': 1.3, 'Nirman Vihar': 1.2 },
+  'Nirman Vihar': { 'Laxmi Nagar': 1.2, 'Preet Vihar': 1.2 },
+  'Preet Vihar': { 'Nirman Vihar': 1.2, 'Karkarduma': 1.4 },
+  'Karkarduma': { 'Preet Vihar': 1.4, 'Anand Vihar': 1.1 },
+  'Anand Vihar': { 'Karkarduma': 1.1, 'Kaushambi': 2.1 },
+  'Kaushambi': { 'Anand Vihar': 2.1, 'Vaishali': 1.0 },
+  'Vaishali': { 'Kaushambi': 1.0 },
+  'Akshardham': { 'Yamuna Bank': 2.7, 'Mayur Vihar Phase 1': 1.7 },
+  'Mayur Vihar Phase 1': { 'Akshardham': 1.7, 'Mayur Vihar Ext.': 1.3 },
+  'Mayur Vihar Ext.': { 'Mayur Vihar Phase 1': 1.3, 'New Ashok Nagar': 1.1 },
+  'New Ashok Nagar': { 'Mayur Vihar Ext.': 1.1, 'Noida Sector 15': 1.2 },
+  'Noida Sector 15': { 'New Ashok Nagar': 1.2, 'Noida Sector 16': 1.1 },
+  'Noida Sector 16': { 'Noida Sector 15': 1.1, 'Noida Sector 18': 1.0 },
+  'Noida Sector 18': { 'Noida Sector 16': 1.0, 'Botanical Garden': 1.5 },
+  'Botanical Garden': { 'Noida Sector 18': 1.5, 'Golf Course': 0.9 },
+  'Golf Course': { 'Botanical Garden': 0.9, 'Noida City Centre': 1.2 },
+  'Noida City Centre': { 'Golf Course': 1.2, 'Noida Sector 34': 1.3 },
+  'Noida Sector 34': { 'Noida City Centre': 1.3, 'Noida Sector 52': 1.6 },
+  'Noida Sector 52': { 'Noida Sector 34': 1.6, 'Noida Sector 61': 1.2 },
+  'Noida Sector 61': { 'Noida Sector 52': 1.2, 'Noida Sector 59': 1.0 },
+  'Noida Sector 59': { 'Noida Sector 61': 1.0, 'Noida Sector 62': 1.0 },
+  'Noida Sector 62': { 'Noida Sector 59': 1.0, 'Noida Electronic City': 1.4 },
+  'Noida Electronic City': { 'Noida Sector 62': 1.4 },
+
+
+
+
+
+  // Yellow Line (Samaypur Badli to HUDA City Centre)
+  'Samaypur Badli': { 'Rohini Sector 18-19': 1.5 },
+  'Rohini Sector 18-19': { 'Samaypur Badli': 1.5, 'Haiderpur Badli Mor': 2.0 },
+  'Haiderpur Badli Mor': { 'Rohini Sector 18-19': 2.0, 'Jahangirpuri': 1.4 },
+  'Jahangirpuri': { 'Haiderpur Badli Mor': 1.4, 'Adarsh Nagar': 1.0 },
+  'Adarsh Nagar': { 'Jahangirpuri': 1.0, 'Azadpur': 1.3 },
+  'Azadpur': { 'Adarsh Nagar': 1.3, 'Model Town': 1.3 },
+  'Model Town': { 'Azadpur': 1.3, 'GTB Nagar': 1.4 },
+  'GTB Nagar': { 'Model Town': 1.4, 'Vishwa Vidyalaya': 1.2 },
+  'Vishwa Vidyalaya': { 'GTB Nagar': 1.2, 'Vidhan Sabha': 1.3 },
+  'Vidhan Sabha': { 'Vishwa Vidyalaya': 1.3, 'Civil Lines': 1.2 },
+  'Civil Lines': { 'Vidhan Sabha': 1.2, 'Kashmere Gate': 1.0 },
+  'Kashmere Gate': { 'Civil Lines': 1.0, 'Chandni Chowk': 1.6, 'Lal Quila': 3.2 },
+  'Chandni Chowk': { 'Kashmere Gate': 1.6, 'Chawri Bazar': 0.8 },
+  'Chawri Bazar': { 'Chandni Chowk': 0.8, 'New Delhi': 1.1 },
+  'New Delhi': { 'Chawri Bazar': 1.1, 'Rajiv Chowk': 1.6 },
+  'Rajiv Chowk': { 'New Delhi': 1.6, 'Patel Chowk': 1.3, 'Barakhamba Road': 0.9 },
+  'Patel Chowk': { 'Rajiv Chowk': 1.3, 'Central Secretariat': 2.3 },
+  'Central Secretariat': { 'Patel Chowk': 2.3, 'Udyog Bhawan': 1.2, 'Janpath': 1.1, 'Khan Market': 1.3 },
+  'Udyog Bhawan': { 'Central Secretariat': 1.2, 'Race Course': 1.3 },
+  'Race Course': { 'Udyog Bhawan': 1.3, 'Jor Bagh': 1.4 },
+  'Jor Bagh': { 'Race Course': 1.4, 'INA': 1.2 },
+  'INA': { 'Jor Bagh': 1.2, 'AIIMS': 1.3 },
+  'AIIMS': { 'INA': 1.3, 'Green Park': 1.6 },
+  'Green Park': { 'AIIMS': 1.6, 'Hauz Khas': 1.8 },
+  'Hauz Khas': { 'Green Park': 1.8, 'Malviya Nagar': 1.6 },
+  'Malviya Nagar': { 'Hauz Khas': 1.6, 'Saket': 1.8 },
+  'Saket': { 'Malviya Nagar': 1.8, 'Qutub Minar': 2.0 },
+  'Qutub Minar': { 'Saket': 2.0, 'Chhatarpur': 1.3 },
+  'Chhatarpur': { 'Qutub Minar': 1.3, 'Sultanpur': 1.4 },
+  'Sultanpur': { 'Chhatarpur': 1.4, 'Ghitorni': 1.4 },
+  'Ghitorni': { 'Sultanpur': 1.4, 'Arjan Garh': 1.5 },
+  'Arjan Garh': { 'Ghitorni': 1.5, 'Guru Dronacharya': 1.4 },
+  'Guru Dronacharya': { 'Arjan Garh': 1.4, 'Sikandarpur': 1.8 },
+  'Sikandarpur': { 'Guru Dronacharya': 1.8, 'MG Road': 1.3 },
+  'MG Road': { 'Sikandarpur': 1.3, 'IFFCO Chowk': 1.6 },
+  'IFFCO Chowk': { 'MG Road': 1.6, 'Huda City Centre': 4.2 },
+
+
+
+
+
+
+  // Red Line Connections (Rithala to Shaheed Sthal New Bus Adda)
+  'Rithala': { 'Rohini West': 1.9 },
+  'Rohini West': { 'Rithala': 1.9, 'Rohini East': 1.0 },
+  'Rohini East': { 'Rohini West': 1.0, 'Pitam Pura': 1.5 },
+  'Pitam Pura': { 'Rohini East': 1.5, 'Kohat Enclave': 1.4 },
+  'Kohat Enclave': { 'Pitam Pura': 1.4, 'Netaji Subhash Place': 1.3 },
+  'Netaji Subhash Place': { 'Kohat Enclave': 1.3, 'Keshav Puram': 1.1 },
+  'Keshav Puram': { 'Netaji Subhash Place': 1.1, 'Kanhaiya Nagar': 1.0 },
+  'Kanhaiya Nagar': { 'Keshav Puram': 1.0, 'Inderlok': 1.7 },
+  'Inderlok': { 'Kanhaiya Nagar': 1.7, 'Shastri Nagar': 1.2 },
+  'Shastri Nagar': { 'Inderlok': 1.2, 'Pratap Nagar': 1.3 },
+  'Pratap Nagar': { 'Shastri Nagar': 1.3, 'Pul Bangash': 1.0 },
+  'Pul Bangash': { 'Pratap Nagar': 1.0, 'Tis Hazari': 1.3 },
+  'Tis Hazari': { 'Pul Bangash': 1.3, 'Kashmere Gate': 1.0 },
+  'Kashmere Gate': { 'Tis Hazari': 1.0, 'Shastri Park': 1.5, 'Red Fort': 1.3 },
+  'Shastri Park': { 'Kashmere Gate': 1.5, 'Seelampur': 1.3 },
+  'Seelampur': { 'Shastri Park': 1.3, 'Welcome': 1.6 },
+  'Welcome': { 'Seelampur': 1.6, 'Shahdara': 1.2 },
+  'Shahdara': { 'Welcome': 1.2, 'Mansarovar Park': 1.0 },
+  'Mansarovar Park': { 'Shahdara': 1.0, 'Jhilmil': 1.3 },
+  'Jhilmil': { 'Mansarovar Park': 1.3, 'Dilshad Garden': 1.0 },
+  'Dilshad Garden': { 'Jhilmil': 1.0 },
+
+
+
+
+
+  // Airport Express Line Connections (New Delhi to Dwarka Sector 21)
+  'New Delhi': { 'Shivaji Stadium': 2.7, 'Dhaula Kuan': 7.7 },
+  'Shivaji Stadium': { 'New Delhi': 2.7, 'Dhaula Kuan': 6.6 },
+  'Dhaula Kuan': { 'Shivaji Stadium': 6.6, 'Delhi Aerocity': 6.5 },
+  'Delhi Aerocity': { 'Dhaula Kuan': 6.5, 'IGI Airport': 3.2 },
+  'IGI Airport': { 'Delhi Aerocity': 3.2, 'Dwarka Sector 21': 3.0 },
+  'Dwarka Sector 21': { 'IGI Airport': 3.0 },
+
+
+
+ // Violet Line (Kashmere Gate to Escorts Mujesar)
+  'Kashmere Gate': { 'Lal Quila': 2.0, 'Central Secretariat': 6.7 },
+  'Lal Quila': { 'Kashmere Gate': 2.0, 'Jama Masjid': 0.5 },
+  'Jama Masjid': { 'Lal Quila': 0.5, 'Delhi Gate': 1.0 },
+  'Delhi Gate': { 'Jama Masjid': 1.0, 'ITO': 1.2 },
+  'ITO': { 'Delhi Gate': 1.2, 'Mandi House': 1.1 },
+  'Mandi House': { 'ITO': 1.1, 'Janpath': 0.9 },
+  'Janpath': { 'Mandi House': 0.9, 'Central Secretariat': 0.7 },
+  'Central Secretariat': { 'Janpath': 0.7, 'Khan Market': 1.1, 'Kashmere Gate': 6.7 },
+  'Khan Market': { 'Central Secretariat': 1.1, 'JLN Stadium': 1.4 },
+  'JLN Stadium': { 'Khan Market': 1.4, 'Jangpura': 1.1 },
+  'Jangpura': { 'JLN Stadium': 1.1, 'Lajpat Nagar': 1.5 },
+  'Lajpat Nagar': { 'Jangpura': 1.5, 'Moolchand': 1.1 },
+  'Moolchand': { 'Lajpat Nagar': 1.1, 'Kailash Colony': 1.2 },
+  'Kailash Colony': { 'Moolchand': 1.2, 'Nehru Place': 1.7 },
+  'Nehru Place': { 'Kailash Colony': 1.7, 'Kalkaji Mandir': 1.0 },
+  'Kalkaji Mandir': { 'Nehru Place': 1.0, 'Govind Puri': 1.0 },
+  'Govind Puri': { 'Kalkaji Mandir': 1.0, 'Okhla': 1.1 },
+  'Okhla': { 'Govind Puri': 1.1, 'Jasola Apollo': 1.3 },
+  'Jasola Apollo': { 'Okhla': 1.3, 'Sarita Vihar': 1.2 },
+  'Sarita Vihar': { 'Jasola Apollo': 1.2, 'Mohan Estate': 1.6 },
+  'Mohan Estate': { 'Sarita Vihar': 1.6, 'Tughlakabad': 1.5 },
+  'Tughlakabad': { 'Mohan Estate': 1.5, 'Badarpur': 2.1 },
+  'Badarpur': { 'Tughlakabad': 2.1, 'Sarai': 1.6 },
+  'Sarai': { 'Badarpur': 1.6, 'NHPC Chowk': 1.5 },
+  'NHPC Chowk': { 'Sarai': 1.5, 'Mewala Maharajpur': 1.4 },
+  'Mewala Maharajpur': { 'NHPC Chowk': 1.4, 'Sector 28': 1.4 },
+  'Sector 28': { 'Mewala Maharajpur': 1.4, 'Badkal Mor': 1.4 },
+  'Badkal Mor': { 'Sector 28': 1.4, 'Old Faridabad': 1.4 },
+  'Old Faridabad': { 'Badkal Mor': 1.4, 'Neelam Chowk Ajronda': 1.4 },
+  'Neelam Chowk Ajronda': { 'Old Faridabad': 1.4, 'Bata Chowk': 1.4 },
+  'Bata Chowk': { 'Neelam Chowk Ajronda': 1.4, 'Escorts Mujesar': 1.3 },
+  'Escorts Mujesar': { 'Bata Chowk': 1.3 },
+
+
+
+// half correct data for magenta line...only till iit delhi...
+  'Botanical Garden': { 'Okhla Bird Sanctuary': 1.5 },
+  'Okhla Bird Sanctuary': { 'Botanical Garden': 1.5, 'Kalindi Kunj': 2.0 },
+  'Kalindi Kunj': { 'Okhla Bird Sanctuary': 2.0, 'Jasola Vihar Shaheen Bagh': 1.8 },
+  'Jasola Vihar Shaheen Bagh': { 'Kalindi Kunj': 1.8, 'Okhla Vihar': 1.6 },
+  'Okhla Vihar': { 'Jasola Vihar Shaheen Bagh': 1.6, 'Jamia Millia Islamia': 1.5 },
+  'Jamia Millia Islamia': { 'Okhla Vihar': 1.5, 'Sukhdev Vihar': 1.3 },
+  'Sukhdev Vihar': { 'Jamia Millia Islamia': 1.3, 'Okhla NSIC': 1.3 },
+  'Okhla NSIC': { 'Sukhdev Vihar': 1.3, 'Kalkaji Mandir': 1.6 },
+  'Kalkaji Mandir': { 'Okhla NSIC': 1.6, 'Nehru Enclave': 1.1 },
+  'Nehru Enclave': { 'Kalkaji Mandir': 1.1, 'Greater Kailash': 1.3 },
+  'Greater Kailash': { 'Nehru Enclave': 1.3, 'Chirag Delhi': 1.3 },
+  'Chirag Delhi': { 'Greater Kailash': 1.3, 'Panchsheel Park': 1.3 },
+  'Panchsheel Park': { 'Chirag Delhi': 1.3, 'Hauz Khas': 1.3 },
+  'Hauz Khas': { 'Panchsheel Park': 1.3, 'IIT Delhi': 1.0 },
+  'IIT Delhi': { 'Hauz Khas': 1.0, 'INA': 1.9 },
+
+
+
+//pink line
+
+ 'Majlis Park': { 'Azadpur': 2.0 },
+  'Azadpur': { 'Majlis Park': 2.0, 'Shalimar Bagh': 2.0 },
+  'Shalimar Bagh': { 'Azadpur': 2.0, 'Netaji Subhash Place': 1.7 },
+  'Netaji Subhash Place': { 'Shalimar Bagh': 1.7, 'Shakurpur': 1.5 },
+  'Shakurpur': { 'Netaji Subhash Place': 1.5, 'Punjabi Bagh West': 1.4 },
+  'Punjabi Bagh West': { 'Shakurpur': 1.4, 'Shivaji Park': 1.5 },
+  'ESI Hostpital' :{'Punjabi Bagh West' : 1.3},
+  'Rajouri Garden : {'ESI Hospital' : 1.3},
+   
+
+
+
+
+
+
+
+
+

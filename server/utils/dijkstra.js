@@ -3,6 +3,8 @@
 const { PriorityQueue } = require("./priorityQueue"); // Assuming you have implemented PriorityQueue
 
 function dijkstra(graph, source, destination) {
+  // console.log(source);
+  // console.log(destination);
   const dist = {};
   const parent = {};
   const pq = new PriorityQueue();
@@ -40,6 +42,7 @@ function dijkstra(graph, source, destination) {
   let current = destination;
 
   while (current !== null) {
+    console.log("current node is" + current);
     shortestPath.unshift(current);
     current = parent[current];
   }
