@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Form from "./Form";
-import PathVisualization from "./PathVisualization";
-// import './styles.css'; // Import CSS stylesheet
-
+import Test from "./test";
 const Home = () => {
   const [shortestPath, setShortestPath] = useState([]);
   const [shortestDistance, setShortestDistance] = useState(null);
@@ -36,15 +34,13 @@ const Home = () => {
 
   return (
     <div className="container">
-      <h1>Find Shortest Path Between Cities</h1>
-      <Form onSubmit={handleFormSubmit} />
+      <h1>Find Shortest Path Between Metro Stations</h1>
+      <br></br>
+      <Form  onSubmit={handleFormSubmit}  />
       {loading && <p>Loading...</p>}
       {error && <p className="error">{error}</p>}
       {shortestPath.length > 0 && !loading && !error && (
-        <PathVisualization
-          shortestPath={shortestPath}
-          shortestDistance={shortestDistance}
-        />
+        <Test shortestPath={shortestPath} shortestDistance={shortestDistance} />
       )}
     </div>
   );

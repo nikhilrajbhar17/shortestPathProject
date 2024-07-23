@@ -1,26 +1,27 @@
 import React, { useState } from "react";
 
 const Form = ({ onSubmit }) => {
-  const [source, setSource] = useState("");
+  const [source, setSource] = useState("ENTER SOURDE STATION");
   const [destination, setDestination] = useState("");
 
-  // Function to handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
     onSubmit(source, destination);
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="frm-div">
       <div className="form-group">
-        <label htmlFor="source">Source City:</label>
+        {/* <label htmlFor="source">Source City: </label> */}
         <select
-          id="source"
+          id="select"
           className="form-control"
           value={source}
           onChange={(e) => setSource(e.target.value)}
           required
         >
+          <option value="">Select Source City</option>
+
           <option value="Majlis Park">Majlis Park</option>
           <option value="Azadpur">Azadpur</option>
           <option value="Shalimar Bagh">Shalimar Bagh</option>
@@ -239,9 +240,9 @@ const Form = ({ onSubmit }) => {
         </select>
       </div>
       <div className="form-group">
-        <label htmlFor="destination">Destination City:</label>
+        {/* <label htmlFor="destination">Destination City:</label> */}
         <select
-          id="destination"
+          id="select"
           className="form-control"
           value={destination}
           onChange={(e) => setDestination(e.target.value)}
@@ -464,7 +465,7 @@ const Form = ({ onSubmit }) => {
           {/* Add more cities as needed */}
         </select>
       </div>
-      <button type="submit" className="btn btn-primary">
+      <button type="submit" className="btn">
         Find Shortest Path
       </button>
     </form>
